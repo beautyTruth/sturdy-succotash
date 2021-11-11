@@ -34,5 +34,16 @@ console.log(smallImg);
 smallImg.forEach((img) => {
   img.addEventListener("click", () => {
     modal.classList.add("open");
+    fullImg.classList.add("open");
+    // choose the correct high-resolution image dynamically
+    const hiRez = img.getAttribute("alt");
+    fullImg.src = `img/full/${hiRez}.jpg`;
   });
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal")) {
+    modal.classList.remove("open");
+    fullImg.classList.remove("open");
+  }
 });
